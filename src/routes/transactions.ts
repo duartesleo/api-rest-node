@@ -63,10 +63,10 @@ export async function transactionsRoutes(app: FastifyInstance) {
       request.body,
     )
 
-    const sessionId = request.cookies.sessionId
+    let sessionId = request.cookies.sessionId
 
     if (!sessionId) {
-      const sessionId = randomUUID()
+      sessionId = randomUUID()
 
       reply.cookie('sessionId', sessionId, {
         path: '/',
